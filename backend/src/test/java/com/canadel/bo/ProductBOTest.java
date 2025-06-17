@@ -84,6 +84,7 @@ public class ProductBOTest {
     assertThrows(BusinessException.class, () -> productBO.deleteProduct(Mockito.anyInt()));
   }
 
+  @Test
   void shouldGetProductByIdSuccessfully() {
     // Given
     when(productRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(SAMPLE_PRODUCT));
@@ -95,6 +96,15 @@ public class ProductBOTest {
     assertNotNull(result);
     assertEquals(SAMPLE_PRODUCT, result);
     Mockito.verify(productRepo, Mockito.times(1)).findById(Mockito.anyInt());
+  }
+
+  @Test
+  void shouldThrowBusinessExceptionGettingProductById() {
+    // Given
+    when(productRepo.findById(Mockito.anyInt())).thenReturn(Optional.empty());
+
+    // When - Then
+    assertThrows(BusinessException.class, () -> productBO.getProduct(Mockito.anyInt()));
   }
 
   @Test
