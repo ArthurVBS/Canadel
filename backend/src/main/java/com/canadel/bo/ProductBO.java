@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 
 import static com.canadel.constant.ExceptionMessages.PRODUCT_NOT_FOUND;
 import static com.canadel.constant.LoggerMessages.*;
-import static com.canadel.constant.RestMessages.PRODUCT_ADDED_SUCCESSFULLY;
 
 @Service
 public class ProductBO {

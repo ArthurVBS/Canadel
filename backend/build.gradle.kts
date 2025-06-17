@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 
 java {
 	toolchain {
@@ -35,4 +35,17 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.test {
+  useJUnitPlatform()
+
+  testLogging {
+    events("passed", "skipped", "failed")
+  }
+
+  reports {
+    html.required.set(true)
+    junitXml.required.set(true)
+  }
 }
