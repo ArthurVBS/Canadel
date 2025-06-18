@@ -1,7 +1,25 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "paths": {
+      "@/*": ["src/*"],
+      "@test/*": ["test/*"]
+    },
+    "resolveJsonModule": true,
+    "types": ["vite/client", "vitest/globals"],
+    "outDir": "./dist",
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "test/**/*.spec.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }
