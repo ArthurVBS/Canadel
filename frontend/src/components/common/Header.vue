@@ -10,7 +10,7 @@ import user from '@/assets/user.png'
       <div>
         <v-img :src="logo" width="64" height="64"/>
       </div>
-      <span class="text-h4 ml-4">Product Manager</span>
+      <span class="text-h4 ml-4">Products Manager</span>
     </div>
 
     <!-- Right -->

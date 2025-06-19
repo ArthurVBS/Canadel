@@ -9,6 +9,9 @@ export const initialState = {
   show: false
 } as state;
 
+/**
+ * Vuex loading store module.
+ */
 const loadingStoreModule = {
   namespaced: true,
   state: (): state => initialState,
