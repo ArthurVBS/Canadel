@@ -24,14 +24,14 @@ const productsStoreModule = {
      */
     [MUTATION.PRODUCTS.ADD_OR_UPDATE_PRODUCT]: (state: state, product: Product): void => {
       const alreadyExists = state.products.some((currentProduct) => {
-        return currentProduct.name === product.name
+        return currentProduct.id === product.id
       })
 
       if (!alreadyExists) {
         state.products.push(product)
       } else {
        state.products = state.products.map((currentProduct) => {
-         return currentProduct.name === product.name ? product : currentProduct
+         return currentProduct.id === product.id ? product : currentProduct
        })
       }
     },
@@ -51,11 +51,20 @@ const productsStoreModule = {
      */
     [MUTATION.PRODUCTS.SET_PRODUCTS]: (state: state, products: Product[]): void => {
       state.products = products
+    },
+
+    /**
+     * Removes a product.
+     * @param state - The state to be mutated.
+     * @param productId - The product id to be removed.
+     */
+    [MUTATION.PRODUCTS.REMOVE_PRODUCT]: (state: state, productId: number): void => {
+      state.products = state.products.filter(currentProduct => currentProduct.id !== productId)
     }
   },
   actions: {
     /**
-     * Calls the mutation to add or update product.
+     * Calls the mutation to add or update a product.
      * @param context - The context to be commited.
      * @param product - The product to be added or updated.
      */
@@ -78,7 +87,16 @@ const productsStoreModule = {
      */
     [ACTION.PRODUCTS.SET_PRODUCTS]: (context: context, products: Product[]): void => {
       context.commit(MUTATION.PRODUCTS.SET_PRODUCTS, products)
-    }
+    },
+
+    /**
+     * Calls the mutation to remove a product.
+     * @param context - The context to be commited.
+     * @param productId - The product id to remove the product.
+     */
+    [ACTION.PRODUCTS.REMOVE_PRODUCT]: (context: context, productId: number): void => {
+      context.commit(MUTATION.PRODUCTS.REMOVE_PRODUCT, productId)
+    },
   },
   getters: {
     /**

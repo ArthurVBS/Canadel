@@ -26,7 +26,7 @@ const closeNotification = () => {
     :color="color"
     :timeout="NOTIFICATION_TIMEOUT"
     style="cursor: pointer"
-    location="top right"
+    location="top center"
     transition="slide-y-transition"
     @click="closeNotification"
   >

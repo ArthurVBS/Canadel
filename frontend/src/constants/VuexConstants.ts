@@ -12,6 +12,7 @@ export const ACTION = {
   PRODUCTS: {
     ADD_OR_UPDATE_PRODUCT: 'addOrUpdateProduct',
     CLEAR: 'clear',
+    REMOVE_PRODUCT: 'removeProduct',
     SET_PRODUCTS: 'setProducts'
   }
 } as const;
@@ -53,6 +54,7 @@ export const MUTATION = {
   PRODUCTS: {
     ADD_OR_UPDATE_PRODUCT: 'addOrUpdateProduct',
     CLEAR: 'clear',
+    REMOVE_PRODUCT: 'removeProduct',
     SET_PRODUCTS: 'setProducts'
   }
 } as const;

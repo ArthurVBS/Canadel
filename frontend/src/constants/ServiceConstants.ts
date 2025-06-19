@@ -11,5 +11,6 @@ export const HTTP_METHODS = {
 
 export const HTTP_END_POINTS = {
   ALL: '/all',
-  ADD: '/add'
+  ADD: '/add',
+  ID: '/{id}'
 } as const;

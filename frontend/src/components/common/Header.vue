@@ -15,7 +15,6 @@ import user from '@/assets/user.png'
 
     <!-- Right -->
     <div class="d-flex align-center justify-center pa-2">
-      <span class="mr-4">EN | FR</span>
       <v-avatar :image="user" />
     </div>
   </v-container>
