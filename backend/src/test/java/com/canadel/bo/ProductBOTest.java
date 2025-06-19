@@ -57,9 +57,11 @@ public class ProductBOTest {
     ProductVO productVO = new ProductVO(SAMPLE_PRODUCT);
 
     // When
-    productBO.addProduct(productVO);
+    Product result = productBO.addProduct(productVO);
 
     // Then
+    assertNotNull(result);
+    assertEquals(SAMPLE_PRODUCT.getName(), result.getName());
     Mockito.verify(productRepo, Mockito.times(1)).save(Mockito.any(Product.class));
   }
 
@@ -69,9 +71,11 @@ public class ProductBOTest {
     when(productRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(SAMPLE_PRODUCT));
 
     // When
-    productBO.deleteProduct(Mockito.anyInt());
+    Product result = productBO.deleteProduct(Mockito.anyInt());
 
     // Then
+    assertNotNull(result);
+    assertEquals(SAMPLE_PRODUCT.getName(), result.getName());
     Mockito.verify(productRepo, Mockito.times(1)).deleteById(Mockito.anyInt());
   }
 
@@ -144,9 +148,11 @@ public class ProductBOTest {
     ProductVO productVO = new ProductVO(ANOTHER_PRODUCT);
 
     // When
-    productBO.updateProduct(Mockito.anyInt(), productVO);
+    Product result = productBO.updateProduct(Mockito.anyInt(), productVO);
 
     // Then
+    assertNotNull(result);
+    assertEquals(SAMPLE_PRODUCT.getName(), result.getName());
     Mockito.verify(productRepo, Mockito.times(1)).save(Mockito.any(Product.class));
   }
 

@@ -125,7 +125,7 @@ public class ProductRestTest {
   // Given
 
   private void givenAddProductSuccessfully() {
-    doNothing().when(productBO).addProduct(Mockito.any());
+    when(productBO.addProduct(Mockito.any())).thenReturn(SAMPLE_PRODUCT);
   }
 
   private void givenAddProductThrowABadRequest() {
@@ -133,7 +133,7 @@ public class ProductRestTest {
   }
 
   private void givenDeleteProductSuccessfully() {
-    doNothing().when(productBO).deleteProduct(Mockito.any());
+    when(productBO.deleteProduct(Mockito.any())).thenReturn(SAMPLE_PRODUCT);
   }
 
   private void givenDeleteProductThrowABadRequest() {
@@ -157,7 +157,7 @@ public class ProductRestTest {
   }
 
   private void givenUpdateProductSuccessfully() {
-    doNothing().when(productBO).updateProduct(Mockito.anyInt(), Mockito.any());
+    when(productBO.updateProduct(Mockito.any(), Mockito.any())).thenReturn(SAMPLE_PRODUCT);
   }
 
   private void givenUpdateProductThrowABadRequest() {

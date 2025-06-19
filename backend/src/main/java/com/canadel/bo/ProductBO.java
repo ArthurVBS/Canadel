@@ -26,22 +26,26 @@ public class ProductBO {
    * Adds a product.
    *
    * @param productVO the product view object.
+   * @return the product added.
    */
-  public void addProduct(ProductVO productVO) {
+  public Product addProduct(ProductVO productVO) {
     productVO.setCreatedAt(new Date());
-    productRepo.save(productVO.toEntity());
+    Product product = productRepo.save(productVO.toEntity());
     LOG.info(PRODUCT_ADDED);
+    return product;
   }
 
   /**
    * Deletes a product.
    *
    * @param id the product id.
+   * @return the product deleted.
    */
-  public void deleteProduct(Integer id) {
-    productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
+  public Product deleteProduct(Integer id) {
+    Product product = productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
     productRepo.deleteById(id);
     LOG.info(PRODUCT_DELETED);
+    return product;
   }
 
   /**
@@ -72,8 +76,9 @@ public class ProductBO {
    *
    * @param id the product id.
    * @param productVO the product new values.
+   * @return the product updated.
    */
-  public void updateProduct(Integer id, ProductVO productVO) {
+  public Product updateProduct(Integer id, ProductVO productVO) {
     Product product = productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
     product.setName(productVO.getName());
     product.setDescription(productVO.getDescription());
@@ -81,5 +86,6 @@ public class ProductBO {
     product.setCreatedAt(productVO.getCreatedAt());
     productRepo.save(product);
     LOG.info(PRODUCT_UPDATED);
+    return product;
   }
 }

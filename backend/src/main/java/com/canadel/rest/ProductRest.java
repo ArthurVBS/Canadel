@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static com.canadel.constant.RestMessages.*;
 
 @RestController
 @RequestMapping("/product")
@@ -23,7 +22,7 @@ public class ProductRest extends BaseRest {
    */
   @PostMapping("/add")
   public ResponseEntity<?> addProduct(@RequestBody ProductVO productVO) {
-    return rest(() -> {productBO.addProduct(productVO); return PRODUCT_ADDED_SUCCESSFULLY;});
+    return rest(() -> productBO.addProduct(productVO));
   }
 
   /**
@@ -34,7 +33,7 @@ public class ProductRest extends BaseRest {
    */
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteProduct(@PathVariable Integer id) {
-    return rest(() -> {productBO.deleteProduct(id); return PRODUCT_DELETED_SUCCESSFULLY;});
+    return rest(() -> productBO.deleteProduct(id));
   }
 
   /**
@@ -67,6 +66,6 @@ public class ProductRest extends BaseRest {
    */
   @PutMapping("/{id}")
   public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody ProductVO productVO) {
-    return rest(() -> {productBO.updateProduct(id, productVO); return PRODUCT_UPDATED_SUCCESSFULLY;});
+    return rest(() -> productBO.updateProduct(id, productVO));
   }
 }
