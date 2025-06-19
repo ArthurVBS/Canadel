@@ -9,14 +9,14 @@
       "@/*": ["src/*"],
       "@test/*": ["test/*"]
     },
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "types": ["vite/client", "vitest/globals"],
-    "outDir": "./dist",
+    "outDir": "./dist"
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.vue",
-    "test/**/*.spec.ts"
+    "src",
+    "test"
   ],
   "exclude": [
     "node_modules",
