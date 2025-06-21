@@ -7,7 +7,7 @@
     "moduleResolution": "Node",
     "paths": {
       "@/*": ["src/*"],
-      "@test/*": ["test/*"]
+      "%/*": ["test/*"]
     },
     "skipLibCheck": true,
     "resolveJsonModule": true,
