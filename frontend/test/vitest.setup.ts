@@ -19,15 +19,15 @@ beforeEach(() => {
       getItem: vi.fn(),
       setItem: vi.fn(),
       removeItem: vi.fn(),
-      clear: vi.fn()
+      clear: vi.fn(),
     },
-    writable: true
+    writable: true,
   });
   Object.defineProperty(navigator, 'clipboard', {
     value: {
-      writeText: vi.fn().mockResolvedValue('')
+      writeText: vi.fn().mockResolvedValue(''),
     },
-    writable: true
+    writable: true,
   });
   Object.defineProperty(window, 'visualViewport', {
     value: {

@@ -1,20 +1,24 @@
-import {context} from "@/stores/store";
-import {ACTION, GETTER, MUTATION} from "@/constants/VuexConstants";
-import {NotificationColors, NotificationIcons} from "@/types/SimplifyTypes";
-import {NOTIFICATION_COLORS, NOTIFICATION_ICONS, NOTIFICATION_TIMEOUT} from "@/constants/NotificationConstants";
+import { context } from '@/stores/store';
+import { ACTION, GETTER, MUTATION } from '@/constants/VuexConstants';
+import { NotificationColors, NotificationIcons } from '@/types/SimplifyTypes';
+import {
+  NOTIFICATION_COLORS,
+  NOTIFICATION_ICONS,
+  NOTIFICATION_TIMEOUT,
+} from '@/constants/NotificationConstants';
 
 export interface state {
-  color: NotificationColors
-  icon: NotificationIcons
-  show: boolean,
-  text: string
+  color: NotificationColors;
+  icon: NotificationIcons;
+  show: boolean;
+  text: string;
 }
 
 export const initialState = {
   color: NOTIFICATION_COLORS.SUCCESS,
   icon: NOTIFICATION_ICONS.SUCCESS,
   show: false,
-  text: ''
+  text: '',
 } as state;
 
 /**
@@ -47,7 +51,7 @@ const notificationStoreModule = {
      * @param state - The state to be mutated.
      */
     [MUTATION.NOTIFICATION.SET_SHOW_FALSE]: (state: state): void => {
-      state.show = false
+      state.show = false;
     },
 
     /**
@@ -55,7 +59,7 @@ const notificationStoreModule = {
      * @param state - The state to be mutated.
      */
     [MUTATION.NOTIFICATION.SET_SHOW_TRUE]: (state: state): void => {
-      state.show = true
+      state.show = true;
     },
 
     /**
@@ -73,7 +77,7 @@ const notificationStoreModule = {
      * @param context - The context to be commited.
      */
     [ACTION.NOTIFICATION.HIDE]: (context: context): void => {
-      context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE)
+      context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE);
     },
 
     /**
@@ -82,15 +86,14 @@ const notificationStoreModule = {
      * @param text - The text to be shown.
      */
     [ACTION.NOTIFICATION.SHOW_ERROR]: (context: context, text: string): void => {
-      context.commit(MUTATION.NOTIFICATION.SET_COLOR, NOTIFICATION_COLORS.ERROR)
-      context.commit(MUTATION.NOTIFICATION.SET_ICON, NOTIFICATION_ICONS.ERROR)
-      context.commit(MUTATION.NOTIFICATION.SET_SHOW_TRUE)
-      context.commit(MUTATION.NOTIFICATION.SET_TEXT, text)
-
+      context.commit(MUTATION.NOTIFICATION.SET_COLOR, NOTIFICATION_COLORS.ERROR);
+      context.commit(MUTATION.NOTIFICATION.SET_ICON, NOTIFICATION_ICONS.ERROR);
+      context.commit(MUTATION.NOTIFICATION.SET_SHOW_TRUE);
+      context.commit(MUTATION.NOTIFICATION.SET_TEXT, text);
 
       setTimeout(() => {
-        context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE)
-      }, NOTIFICATION_TIMEOUT)
+        context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE);
+      }, NOTIFICATION_TIMEOUT);
     },
 
     /**
@@ -99,15 +102,14 @@ const notificationStoreModule = {
      * @param text - The text to be shown.
      */
     [ACTION.NOTIFICATION.SHOW_SUCCESS]: (context: context, text: string): void => {
-      context.commit(MUTATION.NOTIFICATION.SET_COLOR, NOTIFICATION_COLORS.SUCCESS)
-      context.commit(MUTATION.NOTIFICATION.SET_ICON, NOTIFICATION_ICONS.SUCCESS)
-      context.commit(MUTATION.NOTIFICATION.SET_SHOW_TRUE)
-      context.commit(MUTATION.NOTIFICATION.SET_TEXT, text)
-
+      context.commit(MUTATION.NOTIFICATION.SET_COLOR, NOTIFICATION_COLORS.SUCCESS);
+      context.commit(MUTATION.NOTIFICATION.SET_ICON, NOTIFICATION_ICONS.SUCCESS);
+      context.commit(MUTATION.NOTIFICATION.SET_SHOW_TRUE);
+      context.commit(MUTATION.NOTIFICATION.SET_TEXT, text);
 
       setTimeout(() => {
-        context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE)
-      }, NOTIFICATION_TIMEOUT)
+        context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE);
+      }, NOTIFICATION_TIMEOUT);
     },
 
     /**
@@ -116,15 +118,14 @@ const notificationStoreModule = {
      * @param text - The text to be shown.
      */
     [ACTION.NOTIFICATION.SHOW_WARNING]: (context: context, text: string): void => {
-      context.commit(MUTATION.NOTIFICATION.SET_COLOR, NOTIFICATION_COLORS.WARNING)
-      context.commit(MUTATION.NOTIFICATION.SET_ICON, NOTIFICATION_ICONS.WARNING)
-      context.commit(MUTATION.NOTIFICATION.SET_SHOW_TRUE)
-      context.commit(MUTATION.NOTIFICATION.SET_TEXT, text)
-
+      context.commit(MUTATION.NOTIFICATION.SET_COLOR, NOTIFICATION_COLORS.WARNING);
+      context.commit(MUTATION.NOTIFICATION.SET_ICON, NOTIFICATION_ICONS.WARNING);
+      context.commit(MUTATION.NOTIFICATION.SET_SHOW_TRUE);
+      context.commit(MUTATION.NOTIFICATION.SET_TEXT, text);
 
       setTimeout(() => {
-        context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE)
-      }, NOTIFICATION_TIMEOUT)
+        context.commit(MUTATION.NOTIFICATION.SET_SHOW_FALSE);
+      }, NOTIFICATION_TIMEOUT);
     },
   },
   getters: {
@@ -162,8 +163,8 @@ const notificationStoreModule = {
      */
     [GETTER.NOTIFICATION.TEXT]: (state: state) => {
       return state.text;
-    }
-  }
-}
+    },
+  },
+};
 
 export default notificationStoreModule;

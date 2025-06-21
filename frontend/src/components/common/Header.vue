@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import logo from '@/assets/logo.png'
-import user from '@/assets/user.png'
+import logo from '@/assets/logo.png';
+import user from '@/assets/user.png';
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import user from '@/assets/user.png'
     <!-- Left -->
     <div class="d-flex align-center justify-center pa-2">
       <div>
-        <v-img :src="logo" width="64" height="64"/>
+        <v-img :src="logo" width="64" height="64" />
       </div>
       <span class="text-h4 ml-4">Products Manager</span>
     </div>
