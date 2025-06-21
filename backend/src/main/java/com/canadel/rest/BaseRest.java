@@ -2,9 +2,7 @@ package com.canadel.rest;
 
 import com.canadel.exception.BusinessException;
 import org.springframework.http.ResponseEntity;
-
 import java.util.function.Supplier;
-
 import static com.canadel.constant.ExceptionMessages.SOMETHING_WENT_WRONG;
 
 public abstract class BaseRest {
