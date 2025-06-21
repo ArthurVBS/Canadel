@@ -12,13 +12,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import java.util.Date;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductRestTest {
@@ -29,11 +28,9 @@ public class ProductRestTest {
 
   private ResponseEntity<?> response;
 
-  @Mock
-  private ProductBO productBO;
+  @Mock private ProductBO productBO;
 
-  @InjectMocks
-  private ProductRest productRest;
+  @InjectMocks private ProductRest productRest;
 
   @BeforeAll
   static void setUp() {
@@ -161,7 +158,9 @@ public class ProductRestTest {
   }
 
   private void givenUpdateProductThrowABadRequest() {
-    doThrow(new BusinessException("")).when(productBO).updateProduct(Mockito.anyInt(), Mockito.any());
+    doThrow(new BusinessException(""))
+        .when(productBO)
+        .updateProduct(Mockito.anyInt(), Mockito.any());
   }
 
   // When

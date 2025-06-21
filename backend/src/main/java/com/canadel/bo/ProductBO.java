@@ -6,21 +6,22 @@ import com.canadel.repository.ProductRepo;
 import com.canadel.vo.ProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
-
 import static com.canadel.constant.ExceptionMessages.PRODUCT_NOT_FOUND;
-import static com.canadel.constant.LoggerMessages.*;
+import static com.canadel.constant.LoggerMessages.PRODUCTS_FOUND;
+import static com.canadel.constant.LoggerMessages.PRODUCT_ADDED;
+import static com.canadel.constant.LoggerMessages.PRODUCT_DELETED;
+import static com.canadel.constant.LoggerMessages.PRODUCT_FOUND_BY_ID;
+import static com.canadel.constant.LoggerMessages.PRODUCT_UPDATED;
 
 @Service
 public class ProductBO {
 
   private static final Logger LOG = Logger.getLogger(ProductBO.class.getName());
 
-  @Autowired
-  private ProductRepo productRepo;
+  @Autowired private ProductRepo productRepo;
 
   /**
    * Adds a product.
@@ -42,7 +43,8 @@ public class ProductBO {
    * @return the product deleted.
    */
   public Product deleteProduct(Integer id) {
-    Product product = productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
+    Product product =
+        productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
     productRepo.deleteById(id);
     LOG.info(PRODUCT_DELETED);
     return product;
@@ -55,7 +57,8 @@ public class ProductBO {
    * @return the product.
    */
   public Product getProduct(Integer id) {
-    Product product = productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
+    Product product =
+        productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
     LOG.info(PRODUCT_FOUND_BY_ID);
     return product;
   }
@@ -79,7 +82,8 @@ public class ProductBO {
    * @return the product updated.
    */
   public Product updateProduct(Integer id, ProductVO productVO) {
-    Product product = productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
+    Product product =
+        productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
     product.setName(productVO.getName());
     product.setDescription(productVO.getDescription());
     product.setPrice(productVO.getPrice());

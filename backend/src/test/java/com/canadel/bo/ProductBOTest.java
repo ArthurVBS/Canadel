@@ -11,13 +11,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,11 +27,9 @@ public class ProductBOTest {
 
   private static Product SAMPLE_PRODUCT;
 
-  @Mock
-  private ProductRepo productRepo;
+  @Mock private ProductRepo productRepo;
 
-  @InjectMocks
-  private ProductBO productBO;
+  @InjectMocks private ProductBO productBO;
 
   @BeforeAll
   static void setUp() {
@@ -163,6 +161,7 @@ public class ProductBOTest {
     ProductVO productVO = new ProductVO(ANOTHER_PRODUCT);
 
     // When - Then
-    assertThrows(BusinessException.class, () -> productBO.updateProduct(Mockito.anyInt(), productVO));
+    assertThrows(
+        BusinessException.class, () -> productBO.updateProduct(Mockito.anyInt(), productVO));
   }
 }

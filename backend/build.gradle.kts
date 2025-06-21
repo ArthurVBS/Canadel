@@ -1,6 +1,7 @@
 plugins {
-	id("org.springframework.boot") version "3.5.0"
-	id("io.spring.dependency-management") version "1.1.7"
+  id("org.springframework.boot") version "3.5.0"
+  id("io.spring.dependency-management") version "1.1.7"
+  id("com.diffplug.spotless") version "6.20.0"
   java
   jacoco
 }
@@ -12,6 +13,17 @@ java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
 	}
+}
+
+spotless {
+  java {
+    googleJavaFormat("1.15.0")
+    target("src/**/*.java")
+    importOrder("|javax|java|\\#")
+    removeUnusedImports()
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
 }
 
 configurations {

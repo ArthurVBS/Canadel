@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
-  private final static String HOST = "http://localhost:5173";
+  private static final String HOST = "http://localhost:5173";
 
   @Override
   public void addCorsMappings(CorsRegistry registry) {
