@@ -1,13 +1,13 @@
-import {context} from "@/stores/store";
-import {ACTION, GETTER, MUTATION} from "@/constants/VuexConstants";
-import {Product} from "@/types/Product";
+import { context } from '@/stores/store';
+import { ACTION, GETTER, MUTATION } from '@/constants/VuexConstants';
+import { Product } from '@/types/Product';
 
 export interface state {
-  products: Product[]
+  products: Product[];
 }
 
 export const initialState = {
-  products: []
+  products: [],
 } as state;
 
 /**
@@ -24,15 +24,15 @@ const productsStoreModule = {
      */
     [MUTATION.PRODUCTS.ADD_OR_UPDATE_PRODUCT]: (state: state, product: Product): void => {
       const alreadyExists = state.products.some((currentProduct) => {
-        return currentProduct.id === product.id
-      })
+        return currentProduct.id === product.id;
+      });
 
       if (!alreadyExists) {
-        state.products.push(product)
+        state.products.push(product);
       } else {
-       state.products = state.products.map((currentProduct) => {
-         return currentProduct.id === product.id ? product : currentProduct
-       })
+        state.products = state.products.map((currentProduct) => {
+          return currentProduct.id === product.id ? product : currentProduct;
+        });
       }
     },
 
@@ -41,7 +41,7 @@ const productsStoreModule = {
      * @param state - The state to be mutated.
      */
     [MUTATION.PRODUCTS.CLEAR]: (state: state): void => {
-      state.products = []
+      state.products = [];
     },
 
     /**
@@ -50,7 +50,7 @@ const productsStoreModule = {
      * @param products - The products to be set.
      */
     [MUTATION.PRODUCTS.SET_PRODUCTS]: (state: state, products: Product[]): void => {
-      state.products = products
+      state.products = products;
     },
 
     /**
@@ -59,8 +59,8 @@ const productsStoreModule = {
      * @param productId - The product id to be removed.
      */
     [MUTATION.PRODUCTS.REMOVE_PRODUCT]: (state: state, productId: number): void => {
-      state.products = state.products.filter(currentProduct => currentProduct.id !== productId)
-    }
+      state.products = state.products.filter((currentProduct) => currentProduct.id !== productId);
+    },
   },
   actions: {
     /**
@@ -69,7 +69,7 @@ const productsStoreModule = {
      * @param product - The product to be added or updated.
      */
     [ACTION.PRODUCTS.ADD_OR_UPDATE_PRODUCT]: (context: context, product: Product): void => {
-      context.commit(MUTATION.PRODUCTS.ADD_OR_UPDATE_PRODUCT, product)
+      context.commit(MUTATION.PRODUCTS.ADD_OR_UPDATE_PRODUCT, product);
     },
 
     /**
@@ -77,7 +77,7 @@ const productsStoreModule = {
      * @param context - The context to be commited.
      */
     [ACTION.PRODUCTS.CLEAR]: (context: context): void => {
-      context.commit(MUTATION.PRODUCTS.CLEAR)
+      context.commit(MUTATION.PRODUCTS.CLEAR);
     },
 
     /**
@@ -86,7 +86,7 @@ const productsStoreModule = {
      * @param products - The products to be set.
      */
     [ACTION.PRODUCTS.SET_PRODUCTS]: (context: context, products: Product[]): void => {
-      context.commit(MUTATION.PRODUCTS.SET_PRODUCTS, products)
+      context.commit(MUTATION.PRODUCTS.SET_PRODUCTS, products);
     },
 
     /**
@@ -95,7 +95,7 @@ const productsStoreModule = {
      * @param productId - The product id to remove the product.
      */
     [ACTION.PRODUCTS.REMOVE_PRODUCT]: (context: context, productId: number): void => {
-      context.commit(MUTATION.PRODUCTS.REMOVE_PRODUCT, productId)
+      context.commit(MUTATION.PRODUCTS.REMOVE_PRODUCT, productId);
     },
   },
   getters: {
@@ -106,7 +106,7 @@ const productsStoreModule = {
      * @returns - The product state.
      */
     [GETTER.PRODUCTS.PRODUCT]: (state: state, productName: string) => {
-      return state.products.find(currentProduct => currentProduct.name === productName);
+      return state.products.find((currentProduct) => currentProduct.name === productName);
     },
 
     /**
@@ -116,8 +116,8 @@ const productsStoreModule = {
      */
     [GETTER.PRODUCTS.PRODUCTS]: (state: state) => {
       return state.products;
-    }
-  }
-}
+    },
+  },
+};
 
 export default productsStoreModule;

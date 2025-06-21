@@ -1,9 +1,9 @@
 interface Product {
-  id?: number
-  name: string,
-  description: string,
-  createdAt: string
-  price: number
+  id?: number;
+  name: string;
+  description: string;
+  createdAt: string;
+  price: number;
 }
 
 export function createEmptyProduct(): Product {
@@ -11,8 +11,8 @@ export function createEmptyProduct(): Product {
     name: '',
     description: '',
     createdAt: '',
-    price: 0
+    price: 0,
   };
 }
 
-export type { Product }
+export type { Product };

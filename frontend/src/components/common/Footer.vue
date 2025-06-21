@@ -1,5 +1,4 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <v-container fluid class="pa-0 bg-grey-darken-3">

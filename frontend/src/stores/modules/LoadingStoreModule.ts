@@ -1,12 +1,12 @@
-import {context} from "@/stores/store";
-import {ACTION, GETTER, MUTATION} from "@/constants/VuexConstants";
+import { context } from '@/stores/store';
+import { ACTION, GETTER, MUTATION } from '@/constants/VuexConstants';
 
 export interface state {
-  show: boolean
+  show: boolean;
 }
 
 export const initialState = {
-  show: false
+  show: false,
 } as state;
 
 /**
@@ -21,7 +21,7 @@ const loadingStoreModule = {
      * @param state - The state to be mutated.
      */
     [MUTATION.LOADING.SET_SHOW_FALSE]: (state: state): void => {
-      state.show = false
+      state.show = false;
     },
 
     /**
@@ -29,8 +29,8 @@ const loadingStoreModule = {
      * @param state - The state to be mutated.
      */
     [MUTATION.LOADING.SET_SHOW_TRUE]: (state: state): void => {
-      state.show = true
-    }
+      state.show = true;
+    },
   },
   actions: {
     /**
@@ -38,7 +38,7 @@ const loadingStoreModule = {
      * @param context - The context to be commited.
      */
     [ACTION.LOADING.HIDE]: (context: context): void => {
-      context.commit(MUTATION.LOADING.SET_SHOW_FALSE)
+      context.commit(MUTATION.LOADING.SET_SHOW_FALSE);
     },
 
     /**
@@ -46,8 +46,8 @@ const loadingStoreModule = {
      * @param context - The context to be commited.
      */
     [ACTION.LOADING.SHOW]: (context: context): void => {
-      context.commit(MUTATION.LOADING.SET_SHOW_TRUE)
-    }
+      context.commit(MUTATION.LOADING.SET_SHOW_TRUE);
+    },
   },
   getters: {
     /**
@@ -57,8 +57,8 @@ const loadingStoreModule = {
      */
     [GETTER.LOADING.SHOW]: (state: state) => {
       return state.show;
-    }
-  }
-}
+    },
+  },
+};
 
 export default loadingStoreModule;
