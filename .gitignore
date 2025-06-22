@@ -18,8 +18,8 @@
 
 *.nupkg
 .nuget/
-new-backend/bin/
-new-backend/obj/
+backend-dotnet/bin/
+backend-dotnet/obj/
 
 # ASP.NET Core
 project.lock.json
