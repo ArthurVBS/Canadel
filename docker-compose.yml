@@ -1,9 +1,21 @@
 services:
-  backend:
+  backend-dotnet:
     build:
-      context: ./backend
+      context: ./backend-dotnet
       dockerfile: Dockerfile
-    container_name: backend
+    container_name: backend-dotnet
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:5000
+
+  backend-java:
+    build:
+      context: ./backend-java
+      dockerfile: Dockerfile
+    container_name: backend-java
     ports:
       - "5000:5000"
     networks:
@@ -18,8 +30,6 @@ services:
       - "5173:5173"
     networks:
       - app-network
-    depends_on:
-      - backend
 
 networks:
   app-network:

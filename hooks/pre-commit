@@ -1,6 +1,6 @@
 #!/bin/sh
 FRONTEND_DIR="frontend"
-BACKEND_DIR="backend"
+BACKEND_JAVA_DIR="backend-java"
 
 if [ -d "$FRONTEND_DIR" ]; then
  echo "Frontend directory found. Running lint..."
@@ -21,23 +21,23 @@ else
  echo "Frontend directory not found. Skipping lint."
 fi
 
-if [ -d "$BACKEND_DIR" ]; then
- echo "Backend directory found. Running lint..."
- cd "$BACKEND_DIR" || exit 1
+if [ -d "$BACKEND_JAVA_DIR" ]; then
+ echo "Backend Java directory found. Running lint..."
+ cd "$BACKEND_JAVA_DIR" || exit 1
  ./gradlew spotlessApply
  SPOTLESS_EXIT_CODE=$?
 
  if [ $SPOTLESS_EXIT_CODE -ne 0 ]; then
- echo "Backend linting failed. Aborting commit."
+ echo "Backend-Java linting failed. Aborting commit."
  cd - || exit 1
  exit 1
  fi
 
- echo "Backend linting completed. Adding changes..."
+ echo "Backend-Java linting completed. Adding changes..."
  git add .
  cd ..
 else
- echo "Backend directory not found. Skipping lint."
+ echo "Backend-Java directory not found. Skipping lint."
 fi
 
 exit 0

@@ -2,9 +2,9 @@ name: CI - CD
 
 on:
   push:
-    branches: [ master, github-actions ]
-  pull_request:
     branches: [ master ]
+  pull_request:
+    branches: [ '*' ]
 
 jobs:
   type-check:
@@ -41,8 +41,8 @@ jobs:
           chmod +x scripts/run-frontend-tests.sh
           ./scripts/run-frontend-tests.sh
 
-  backend-tests:
-    name: 🧪 Backend Tests
+  backend-java-tests:
+    name: 🧪 Backend Java Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -54,10 +54,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Run backend test script
+      - name: Run backend java test script
         run: |
-          chmod +x scripts/run-backend-tests.sh
-          ./scripts/run-backend-tests.sh
+          chmod +x scripts/run-backend-java-tests.sh
+          ./scripts/run-backend-java-tests.sh
 
   docker-build-check:
     name: 🐳 Docker Compose Build

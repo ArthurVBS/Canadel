@@ -10,6 +10,28 @@
 *.tar.gz
 *.rar
 
+# Visual Studio
+.vs/
+.vscode/
+.vs2017/
+.vs2019/
+
+*.nupkg
+.nuget/
+backend-dotnet/bin/
+backend-dotnet/obj/
+
+# ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+*.log
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
