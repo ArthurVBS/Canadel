@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import static com.canadel.constant.ExceptionMessages.PRODUCT_NOT_FOUND;
+import static com.canadel.constant.ExceptionMessages.PRODUCT_WITH_EMPTY_VALUES;
 import static com.canadel.constant.LoggerMessages.PRODUCTS_FOUND;
 import static com.canadel.constant.LoggerMessages.PRODUCT_ADDED;
 import static com.canadel.constant.LoggerMessages.PRODUCT_DELETED;
@@ -31,6 +32,7 @@ public class ProductBO {
    */
   public Product addProduct(ProductVO productVO) {
     productVO.setCreatedAt(new Date());
+    this.validateProduct(productVO);
     Product product = productRepo.save(productVO.toEntity());
     LOG.info(PRODUCT_ADDED);
     return product;
@@ -82,6 +84,7 @@ public class ProductBO {
    * @return the product updated.
    */
   public Product updateProduct(Integer id, ProductVO productVO) {
+    this.validateProduct(productVO);
     Product product =
         productRepo.findById(id).orElseThrow(() -> new BusinessException(PRODUCT_NOT_FOUND));
     product.setName(productVO.getName());
@@ -91,5 +94,21 @@ public class ProductBO {
     productRepo.save(product);
     LOG.info(PRODUCT_UPDATED);
     return product;
+  }
+
+  /**
+   * Validates the product values.
+   *
+   * @param productVO the product to be validated.
+   */
+  private void validateProduct(ProductVO productVO) {
+    boolean isNameEmpty = productVO.getName() == null || productVO.getName().isEmpty();
+    boolean isDescriptionEmpty =
+        productVO.getDescription() == null || productVO.getDescription().isEmpty();
+    boolean isPriceEmpty = productVO.getPrice() == null || productVO.getPrice() == 0;
+
+    if (isNameEmpty || isDescriptionEmpty || isPriceEmpty) {
+      throw new BusinessException(PRODUCT_WITH_EMPTY_VALUES);
+    }
   }
 }

@@ -25,6 +25,8 @@ public class ProductBOTest {
 
   private static Product ANOTHER_PRODUCT;
 
+  private static Product EMPTY_PRODUCT;
+
   private static Product SAMPLE_PRODUCT;
 
   @Mock private ProductRepo productRepo;
@@ -46,6 +48,13 @@ public class ProductBOTest {
     ANOTHER_PRODUCT.setDescription("Product 2 Description");
     ANOTHER_PRODUCT.setPrice(14.1);
     ANOTHER_PRODUCT.setCreatedAt(new Date());
+
+    EMPTY_PRODUCT = new Product();
+    ANOTHER_PRODUCT.setId(3);
+    EMPTY_PRODUCT.setName("");
+    EMPTY_PRODUCT.setDescription("");
+    EMPTY_PRODUCT.setPrice(0.0);
+    EMPTY_PRODUCT.setCreatedAt(new Date());
   }
 
   @Test
@@ -61,6 +70,15 @@ public class ProductBOTest {
     assertNotNull(result);
     assertEquals(SAMPLE_PRODUCT.getName(), result.getName());
     Mockito.verify(productRepo, Mockito.times(1)).save(Mockito.any(Product.class));
+  }
+
+  @Test
+  void shouldThrowBusinessExceptionAddingAnEmptyProduct() {
+    // Given
+    ProductVO productVO = new ProductVO(EMPTY_PRODUCT);
+
+    // When - Then
+    assertThrows(BusinessException.class, () -> productBO.addProduct(productVO));
   }
 
   @Test
@@ -163,5 +181,15 @@ public class ProductBOTest {
     // When - Then
     assertThrows(
         BusinessException.class, () -> productBO.updateProduct(Mockito.anyInt(), productVO));
+  }
+
+  @Test
+  void shouldThrowBusinessExceptionUpdatingAnEmptyProduct() {
+    // Given
+    ProductVO productVO = new ProductVO(EMPTY_PRODUCT);
+
+    // When - Then
+    assertThrows(
+        BusinessException.class, () -> productBO.updateProduct(EMPTY_PRODUCT.getId(), productVO));
   }
 }
