@@ -1,7 +1,7 @@
 services:
   backend-dotnet:
     build:
-      context: backend-dotnet
+      context: ./backend-dotnet
       dockerfile: Dockerfile
     container_name: backend-dotnet
     ports:
@@ -13,7 +13,7 @@ services:
 
   backend-java:
     build:
-      context: ./backend
+      context: ./backend-java
       dockerfile: Dockerfile
     container_name: backend-java
     ports:
