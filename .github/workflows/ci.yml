@@ -2,9 +2,9 @@ name: CI - CD
 
 on:
   push:
-    branches: [ master, github-actions ]
-  pull_request:
     branches: [ master ]
+  pull_request:
+    branches: [ '*' ]
 
 jobs:
   type-check:

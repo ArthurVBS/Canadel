@@ -1,0 +1,6 @@
+@NewCanadel_HostAddress = http://localhost:5072
+
+GET {{NewCanadel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

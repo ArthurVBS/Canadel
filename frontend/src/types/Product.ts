@@ -2,7 +2,7 @@ interface Product {
   id?: number;
   name: string;
   description: string;
-  createdAt: string;
+  createdAt?: string;
   price: number;
 }
 
@@ -10,7 +10,6 @@ export function createEmptyProduct(): Product {
   return {
     name: '',
     description: '',
-    createdAt: '',
     price: 0,
   };
 }
