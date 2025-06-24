@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using NewCanadel.Constants;
-using NewCanadel.Exceptions;
+using Canadel.Constants;
+using Canadel.Exceptions;
 
-namespace NewCanadel.Controllers
+namespace Canadel.Controllers
 {
   public abstract class BaseController : ControllerBase
   {

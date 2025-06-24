@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using NewCanadel.Models;
+using Canadel.Models;
 
-namespace NewCanadel.Data
+namespace Canadel.Data
 {
   public class AppDbContext : DbContext
   {

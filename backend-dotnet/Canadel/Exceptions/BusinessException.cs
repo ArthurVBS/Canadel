@@ -1,4 +1,4 @@
-namespace NewCanadel.Exceptions
+namespace Canadel.Exceptions
 {
   public class BusinessException : Exception
   {

@@ -1,13 +1,12 @@
-using NewCanadel.Constants;
-using NewCanadel.Controllers;
-using NewCanadel.DTOs;
-using NewCanadel.Exceptions;
-using NewCanadel.Models;
-using NewCanadel.Repositories;
+using Canadel.Constants;
+using Canadel.DTOs;
+using Canadel.Exceptions;
+using Canadel.Models;
+using Canadel.Repositories;
 
-namespace NewCanadel.Services
+namespace Canadel.Services
 {
-  public class ProductService(ProductRepository repository, ILogger<ProductService> logger)
+  public class ProductService(IProductRepository repository, ILogger<ProductService> logger) : IProductService
   {
     public async Task<Product> AddProduct(ProductDTO productDTO)
     {
@@ -57,7 +56,7 @@ namespace NewCanadel.Services
       return product;
     }
 
-    private void ValidateProduct(ProductDTO productDTO)
+    private static void ValidateProduct(ProductDTO productDTO)
     {
       bool isNameEmpty = String.IsNullOrEmpty(productDTO.Name);
       bool isDescriptionEmpty = String.IsNullOrEmpty(productDTO.Description);

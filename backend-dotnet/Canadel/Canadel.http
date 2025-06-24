@@ -1,0 +1,36 @@
+@Canadel_HostAddress = http://localhost:5000
+@Canadel_Product_EndPoint = /product
+
+### Add Product
+POST {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/add
+Accept: application/json
+Content-Type: application/json
+{
+  "name": "My Product",
+  "description": "My Product Description",
+  "price": 120.00
+}
+
+### Delete Product by Id
+DELETE {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/1
+Accept: application/json
+
+### Get All Products
+GET {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/all
+Accept: application/json
+
+### Get Product by Id
+GET {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/1
+Accept: application/json
+
+### Update Product by Id
+PUT {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/1
+Accept: application/json
+Content-Type: application/json
+{
+  "id": 1,
+  "name": "My Product Updated",
+  "description": "My Product Description Updated",
+  "price": 150.00,
+  "createdAt": "2025-06-24T18:42:13.1540546-03:00"
+}

@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using NewCanadel.DTOs;
-using NewCanadel.Models;
-using NewCanadel.Services;
+using Canadel.DTOs;
+using Canadel.Models;
+using Canadel.Services;
 
-namespace NewCanadel.Controllers
+namespace Canadel.Controllers
 {
   [ApiController]
   [Route("[controller]")]
-  public class ProductController(ProductService service) : BaseController
+  public class ProductController(IProductService service) : BaseController
   {
     [HttpPost("add")]
     public async Task<ActionResult<Product>> AddProduct([FromBody] ProductDTO productDTO)

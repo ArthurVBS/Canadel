@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using NewCanadel.Constants;
-using NewCanadel.Data;
-using NewCanadel.Exceptions;
-using NewCanadel.Models;
+using Canadel.Constants;
+using Canadel.Data;
+using Canadel.Exceptions;
+using Canadel.Models;
 
-namespace NewCanadel.Repositories
+namespace Canadel.Repositories
 {
-  public class ProductRepository(AppDbContext context)
+  public class ProductRepository(AppDbContext context) : IProductRepository
   {
     public async Task AddProductAsync(Product product)
     {

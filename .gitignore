@@ -18,8 +18,8 @@
 
 *.nupkg
 .nuget/
-backend-dotnet/bin/
-backend-dotnet/obj/
+**/bin/
+**/obj/
 
 # ASP.NET Core
 project.lock.json
@@ -31,6 +31,10 @@ project.fragment.lock.json
 *.msm
 *.msp
 *.log
+
+# Database
+*.db-wal
+*.db-shm
 
 .gradle
 build/

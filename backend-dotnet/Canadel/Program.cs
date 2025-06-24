@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using NewCanadel.Data;
-using NewCanadel.Repositories;
-using NewCanadel.Services;
+using Canadel.Data;
+using Canadel.Repositories;
+using Canadel.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=canadel.db"));
 
-builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddControllers();
 

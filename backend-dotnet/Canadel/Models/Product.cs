@@ -1,6 +1,6 @@
-using NewCanadel.DTOs;
+using Canadel.DTOs;
 
-namespace NewCanadel.Models
+namespace Canadel.Models
 {
   public class Product
   {

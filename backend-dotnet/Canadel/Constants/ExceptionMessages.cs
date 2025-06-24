@@ -1,4 +1,4 @@
-namespace NewCanadel.Constants
+namespace Canadel.Constants
 {
   public class ExceptionMessages
   {
