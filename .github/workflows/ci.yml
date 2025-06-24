@@ -41,6 +41,23 @@ jobs:
           chmod +x scripts/run-frontend-tests.sh
           ./scripts/run-frontend-tests.sh
 
+  backend-dotnet-tests:
+    name: 🧪 Backend .NET Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Run backend dotnet test script
+        run: |
+          chmod +x scripts/run-backend-dotnet-tests.sh
+          ./scripts/run-backend-dotnet-tests.sh
+
   backend-java-tests:
     name: 🧪 Backend Java Tests
     runs-on: ubuntu-latest
