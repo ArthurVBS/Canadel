@@ -36,6 +36,11 @@ project.fragment.lock.json
 *.db-wal
 *.db-shm
 
+# .NET Test Reports
+
+backend-dotnet/**/TestResults/
+backend-dotnet/coverage-report/
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
