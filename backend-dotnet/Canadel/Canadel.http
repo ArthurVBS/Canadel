@@ -1,8 +1,8 @@
-@Canadel_HostAddress = http://localhost:5000
-@Canadel_Product_EndPoint = /product
+@Canadel_HostAddress = http://localhost:12000
+@Canadel_Product_EndPoint = /products
 
 ### Add Product
-POST {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/add
+POST {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}
 Accept: application/json
 Content-Type: application/json
 {
@@ -16,7 +16,7 @@ DELETE {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/1
 Accept: application/json
 
 ### Get All Products
-GET {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}/all
+GET {{Canadel_HostAddress}}{{Canadel_Product_EndPoint}}
 Accept: application/json
 
 ### Get Product by Id

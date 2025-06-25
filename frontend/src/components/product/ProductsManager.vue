@@ -75,8 +75,7 @@ const fetchAllProducts = () => {
  * Checks if the new product is valid.
  * @returns - True if it is, false otherwise.
  */
-const isNewProductValid = () =>
-  !(!newProduct.value.description || !newProduct.value.name || !newProduct.value.price);
+const isNewProductValid = () => !(!newProduct.value.name || !newProduct.value.price);
 
 // Add Card Toggle
 
@@ -129,13 +128,20 @@ onMounted(() => {
         </div>
 
         <div class="d-flex justify-center align-center w-100 pa-2">
-          <v-text-field v-model="newProduct.name" class="mx-2 w-100" hide-details label="Name" />
+          <v-text-field
+            v-model="newProduct.name"
+            class="mx-2 w-100"
+            hint="Required"
+            persistent-hint
+            label="Name *"
+          />
           <v-number-input
             v-model="newProduct.price"
             class="mx-2 w-100"
             control-variant="stacked"
-            hide-details
-            label="Price"
+            hint="Required"
+            persistent-hint
+            label="Price *"
             inset
             :precision="2"
             :min="0"

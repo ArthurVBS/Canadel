@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductRest extends BaseRest {
 
   @Autowired private ProductBO productBO;
@@ -25,7 +25,7 @@ public class ProductRest extends BaseRest {
    * @param productVO the product view object.
    * @return the success message.
    */
-  @PostMapping("/add")
+  @PostMapping()
   public ResponseEntity<?> addProduct(@RequestBody ProductVO productVO) {
     return rest(() -> productBO.addProduct(productVO));
   }
@@ -57,7 +57,7 @@ public class ProductRest extends BaseRest {
    *
    * @return the products
    */
-  @GetMapping("/all")
+  @GetMapping()
   public ResponseEntity<?> getProducts() {
     return rest(productBO::getProducts);
   }

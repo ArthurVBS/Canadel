@@ -103,11 +103,9 @@ public class ProductBO {
    */
   private void validateProduct(ProductVO productVO) {
     boolean isNameEmpty = productVO.getName() == null || productVO.getName().isEmpty();
-    boolean isDescriptionEmpty =
-        productVO.getDescription() == null || productVO.getDescription().isEmpty();
     boolean isPriceEmpty = productVO.getPrice() == null || productVO.getPrice() == 0;
 
-    if (isNameEmpty || isDescriptionEmpty || isPriceEmpty) {
+    if (isNameEmpty || isPriceEmpty) {
       throw new BusinessException(PRODUCT_WITH_EMPTY_VALUES);
     }
   }
