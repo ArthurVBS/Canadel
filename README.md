@@ -44,7 +44,7 @@
 - Frontend:
   - **TypeScript**
   - **Vue**
-  - **Yarn**
+  - **Yarn** or NPM
   - Node
   - CSS
   - Vuetify
@@ -113,14 +113,14 @@
     - To use Java Ecosystem: `cd backend-java`
       - Install gradle modules: `./gradlew`,
       - Finally, start a localhost: `./gradlew bootRun`,
-      - The available endpoint: `http://localhost:5000`.
+      - The available endpoint: `http://localhost:12000`.
     - To use C# Ecosystem: `cd backend-dotnet`
       - Install modules: `dotnet build`,
       - Finally, start a localhost: `dotnet run --project ./Canadel/Canadel.csproj`,
-      - The available endpoint: `http://localhost:5000`.
+      - The available endpoint: `http://localhost:12000`.
   - The second terminal access the frontend folder: `cd frontend`,
-    - Install node modules: `yarn`,
-    - Finally, start a localhost: `yarn dev`,
+    - Install node modules: `yarn` or `npm install`,
+    - Finally, start a localhost: `yarn dev` or `npm run dev`,
     - The available endpoint: `http://localhost:5173`.
   - Access the application through `http://localhost:5173`.
 
@@ -140,8 +140,8 @@
 - Frontend:
   - Open the CMD terminal,
   - Access the frontend folder: `cd frontend`,
-  - Install node modules: `yarn`,
-  - Finally, run the test: `yarn test`.
+  - Install node modules: `yarn` or `npm install`,
+  - Finally, run the test: `yarn test` or `npm run test`.
 
 ### 📊 Run with Coverage
 
@@ -163,8 +163,8 @@
 - Frontend
   - Open the CMD terminal,
   - Access the frontend folder: `cd frontend`
-  - Install node modules: `yarn`,
-  - Run the test with coverage: `yarn test:coverage`,
+  - Install node modules: `yarn` or `npm install`,
+  - Run the test with coverage: `yarn test:coverage` or `npm run test:coverage`,
   - Open the `frontend/coverage/index.html` file in browser.
 
 <h2 align="center">👨🏽‍💻 Author</h2>

@@ -15,11 +15,7 @@ function addProduct(
   errorCallback: (error: string) => void,
   finallyCallback: () => void
 ) {
-  const promise = BaseService.performRequest(
-    HTTP_METHODS.POST,
-    BASE_ROUTES.PRODUCT + HTTP_END_POINTS.ADD,
-    product
-  );
+  const promise = BaseService.performRequest(HTTP_METHODS.POST, BASE_ROUTES.PRODUCTS, product);
   BaseService.executePromise(promise, successCallback, errorCallback, finallyCallback);
 }
 
@@ -38,7 +34,7 @@ function deleteProduct(
 ) {
   const promise = BaseService.performRequest(
     HTTP_METHODS.DELETE,
-    BASE_ROUTES.PRODUCT + HTTP_END_POINTS.ID.replace('{id}', productId.toString())
+    BASE_ROUTES.PRODUCTS + HTTP_END_POINTS.ID.replace('{id}', productId.toString())
   );
   BaseService.executePromise(promise, successCallback, errorCallback, finallyCallback);
 }
@@ -54,10 +50,7 @@ function getProducts(
   errorCallback: (error: string) => void,
   finallyCallback: () => void
 ) {
-  const promise = BaseService.performRequest(
-    HTTP_METHODS.GET,
-    BASE_ROUTES.PRODUCT + HTTP_END_POINTS.ALL
-  );
+  const promise = BaseService.performRequest(HTTP_METHODS.GET, BASE_ROUTES.PRODUCTS);
   BaseService.executePromise(promise, successCallback, errorCallback, finallyCallback);
 }
 
@@ -76,7 +69,7 @@ function updateProduct(
 ) {
   const promise = BaseService.performRequest(
     HTTP_METHODS.PUT,
-    BASE_ROUTES.PRODUCT + HTTP_END_POINTS.ID.replace('{id}', product.id.toString()),
+    BASE_ROUTES.PRODUCTS + HTTP_END_POINTS.ID.replace('{id}', product.id.toString()),
     product
   );
   BaseService.executePromise(promise, successCallback, errorCallback, finallyCallback);

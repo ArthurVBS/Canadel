@@ -5,11 +5,11 @@ services:
       dockerfile: Dockerfile
     container_name: backend-dotnet
     ports:
-      - "5000:5000"
+      - "12000:12000"
     networks:
       - app-network
     environment:
-      - ASPNETCORE_URLS=http://0.0.0.0:5000
+      - ASPNETCORE_URLS=http://0.0.0.0:12000
 
   backend-java:
     build:
@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     container_name: backend-java
     ports:
-      - "5000:5000"
+      - "12000:12000"
     networks:
       - app-network
 

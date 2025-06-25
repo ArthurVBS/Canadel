@@ -46,7 +46,6 @@ namespace Canadel.Repositories
       existingProduct.Name = product.Name;
       existingProduct.Description = product.Description;
       existingProduct.Price = product.Price;
-      existingProduct.CreatedAt = product.CreatedAt;
 
       await context.SaveChangesAsync();
     }

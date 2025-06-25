@@ -1,5 +1,5 @@
 export const BASE_ROUTES = {
-  PRODUCT: '/product',
+  PRODUCTS: '/products',
 } as const;
 
 export const HTTP_METHODS = {
@@ -10,7 +10,5 @@ export const HTTP_METHODS = {
 } as const;
 
 export const HTTP_END_POINTS = {
-  ALL: '/all',
-  ADD: '/add',
   ID: '/{id}',
 } as const;

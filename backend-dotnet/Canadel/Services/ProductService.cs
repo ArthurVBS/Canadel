@@ -59,10 +59,9 @@ namespace Canadel.Services
     private static void ValidateProduct(ProductDTO productDTO)
     {
       bool isNameEmpty = String.IsNullOrEmpty(productDTO.Name);
-      bool isDescriptionEmpty = String.IsNullOrEmpty(productDTO.Description);
       bool isPriceEmpty = productDTO.Price.Equals(0);
 
-      if (isNameEmpty || isDescriptionEmpty || isPriceEmpty)
+      if (isNameEmpty || isPriceEmpty)
       {
         throw new BusinessException(ExceptionMessages.PRODUCT_WITH_EMPTY_VALUES);
       }

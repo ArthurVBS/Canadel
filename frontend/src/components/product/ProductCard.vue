@@ -87,7 +87,7 @@ const updateProduct = () => {
  * @returns - True if it is, false otherwise.
  */
 const isEditedProductValid = () =>
-  !(!editedProduct.value.description || !editedProduct.value.name || !editedProduct.value.price) &&
+  !(!editedProduct.value.name || !editedProduct.value.price) &&
   !(
     editedProduct.value.description === props.product.description &&
     editedProduct.value.name === props.product.name &&
@@ -168,8 +168,9 @@ watch(props, () => {
         v-if="isEditMode()"
         v-model="editedProduct.name"
         class="w-50 pa-2"
-        hide-details
-        label="Name"
+        hint="Required"
+        persistent-hint
+        label="Name *"
       />
       <v-card-title v-else class="flex-grow-1 pa-4 text-truncate" style="max-width: 60%">{{
         product.name
@@ -181,8 +182,9 @@ watch(props, () => {
           v-model="editedProduct.price"
           class="w-100"
           control-variant="stacked"
-          hide-details
-          label="Price"
+          hint="Required"
+          persistent-hint
+          label="Price *"
           inset
           :precision="2"
           :min="0"
@@ -268,7 +270,7 @@ watch(props, () => {
           label="Description"
         />
         <v-card-text v-else class="text-justify">
-          {{ product.description }}
+          {{ product.description ? product.description : 'No Description...' }}
         </v-card-text>
       </div>
     </v-expand-transition>

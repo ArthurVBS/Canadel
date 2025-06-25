@@ -18,6 +18,6 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
-EXPOSE 5000
+EXPOSE 12000
 
 ENTRYPOINT ["dotnet", "Canadel.dll"]
