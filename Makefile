@@ -7,8 +7,8 @@ install-hooks:
 
 run-docker-compose-dotnet:
 	@echo "Running Canadel Product Manager using .NET backend"
-	docker compose up backend-dotnet frontend
+	docker compose up --build backend-dotnet frontend
 
 run-docker-compose-java:
 	@echo "Running Canadel Product Manager using Java backend"
-	docker compose up backend-java frontend
+	docker compose up --build backend-java frontend
