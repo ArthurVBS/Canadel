@@ -2,11 +2,13 @@
 
 <div align="center">
 <img src="https://img.shields.io/badge/GitHub-000?style=social&logoColor=469BD2&logo=github">&nbsp;
-<img src="https://img.shields.io/badge/Docker-000?style=social&logoColor=469BD2&logo=Docker">&nbsp;
-<img src="https://img.shields.io/badge/TypeScript-000?style=social&logoColor=469BD2&logo=TypeScript">&nbsp;
+<img src="https://img.shields.io/badge/Docker-000?style=social&logoColor=469BD2&logo=docker">&nbsp;
+<img src="https://img.shields.io/badge/TypeScript-000?style=social&logoColor=469BD2&logo=typescript">&nbsp;
 <img src="https://img.shields.io/badge/Vue-000?style=social&logoColor=469BD2&logo=vue.js">&nbsp;
 <img src="https://img.shields.io/badge/Java-000?style=social&logoColor=469BD2&logo=openjdk">
-<img src="https://img.shields.io/badge/Spring-000?style=social&logoColor=469BD2&logo=Spring">&nbsp;
+<img src="https://img.shields.io/badge/Spring-000?style=social&logoColor=469BD2&logo=spring">&nbsp;
+<img src="https://img.shields.io/badge/C%23-000?style=social&logoColor=469BD2&logo=c#">&nbsp;
+<img src="https://img.shields.io/badge/.NET-000?style=social&logoColor=469BD2&logo=dotnet">&nbsp;
 </div>
 
 ## ✨ About the project:
@@ -15,22 +17,30 @@
 - 🧪 The project has unit tests for backend and frontend and allow the developer see its coverage.
 - 🧹 The project has linters for backend and frontend to validate the quality of the code and format it.
 - 🐳 The project uses CI-CD to validate the Merge Requests with pipelines in the GitHub actions.
-- 🧑‍💻 The actual project uses Java 17 + Spring in the backend and Typescript + Vue 3 in the frontend, but as soon as possible the project will use C# ecosystem in the backend.
+- 🧑‍💻 The project was two approaches:
+  - Java 17 + Spring in the backend and Typescript + Vue 3 in the frontend.
+  - C# + .NET 8 in the backend and Typescript + Vue 3 in the frontend.
 
 ## 💻 Project status:
 
-- 🚧 Project in progress... 🛠
+- Finished project ✔️
 
 ## 🛠 Technologies:
 
 - Backend:
-  - **Java**
-  - **Spring**
-  - **Gradlew**
-  - Spotless
-  - Lombok
-  - H2 Database
-  - Jacoco Reporter
+  - Java Ecosystem
+    - **Java**
+    - **Spring**
+    - **Gradlew**
+    - Spotless
+    - Lombok
+    - H2 Database
+    - Jacoco Reporter
+  - C# Ecosystem
+    - **C#**
+    - **.NET**
+    - Xunit
+    - SQLite
 - Frontend:
   - **TypeScript**
   - **Vue**
@@ -59,7 +69,7 @@
 - The application is accessible for the most used screen sizes:
   - Allow user access the application by web.
   - Allow user access the application by mobile.
-- The application uses a database in memory to store the data.
+- The application stores the data in a database.
 - The application holds the information in frontend using state.
 
 ## ⚙️ Prerequisites:
@@ -68,12 +78,17 @@
 
 - General:
   - Docker Compose
+  - Makefile
 
 ### 🧑‍💻 Develop
 
 - Backend:
-  - Java 17
-  - Gradle 8
+  - Java Ecosystem
+    - Java 17
+    - Gradle 8
+  - C# Ecosystem
+    - C#
+    - .NET 8
 - Frontend:
   - Node 20
   - Yarn
@@ -87,17 +102,22 @@
 
 - Download the ZIP or Clone the application on your machine;
   - Open one CMD terminal in the root of the project folder,
-  - Run `docker compose up --build`,
+  - Run `make run-docker-compose-dotnet` or `make run-docker-compose-java`,
   - Access the application through `http://localhost:5173`.
 
 ### 💻 Develop
 
 - Clone the application on your machine;
   - Open two CMD terminal in the root of the project folder,
-  - The first terminal access the backend folder: `cd backend`,
-    - Install gradle modules: `./gradlew`,
-    - Finally, start a localhost: `./gradlew bootRun`,
-    - The available endpoint: `http://localhost:5000`.
+  - The first terminal access one of the backend folders: ,
+    - To use Java Ecosystem: `cd backend-java`
+      - Install gradle modules: `./gradlew`,
+      - Finally, start a localhost: `./gradlew bootRun`,
+      - The available endpoint: `http://localhost:5000`.
+    - To use C# Ecosystem: `cd backend-dotnet`
+      - Install modules: `dotnet build`,
+      - Finally, start a localhost: `dotnet run`,
+      - The available endpoint: `http://localhost:5000`.
   - The second terminal access the frontend folder: `cd frontend`,
     - Install node modules: `yarn`,
     - Finally, start a localhost: `yarn dev`,
@@ -110,9 +130,13 @@
 
 - Backend:
   - Open the CMD terminal,
-  - Access the backend folder `cd backend`,
-  - Install gradle modules: `./gradlew`,
-  - Finally run the tests: `./gradlew test`.
+  - Access the backend folder,
+    - To use Java Ecosystem: `cd backend-java`
+      - Install gradle modules: `./gradlew`,
+      - Finally run the tests: `./gradlew test`.
+    - To use C# Ecosystem: `cd backend-dotnet`
+      - Build project: `dotnet build`,
+      - Finally run the tests: `dotnet test`.
 - Frontend:
   - Open the CMD terminal,
   - Access the frontend folder: `cd frontend`,
@@ -124,9 +148,17 @@
 - Backend
   - Open the CMD terminal,
   - Access the backend folder `cd backend`
-  - Install gradle modules: `./gradlew`
-  - Finally run the tests with coverage: `./gradlew test jacocoTestCoverageVerification`,
-  - Open the `backend/build/reports/jacoco/test/html/index.html` file in browser.
+    - To use Java Ecosystem: `cd backend-java`
+      - Install gradle modules: `./gradlew`
+      - Finally run the tests with coverage: `./gradlew test jacocoTestCoverageVerification`,
+      - Open the `backend-java/build/reports/jacoco/test/html/index.html` file in browser.
+    - To use C# Ecosystem: `cd backend-dotnet`
+      - Build project: `dotnet build`,
+      - Install globally the report generator tool: `dotnet tool install -g dotnet-reportgenerator-globaltool`
+      - Run the tests: `dotnet test`,
+      - Create the coverage result: `dotnet test --collect:"XPlat Code Coverage"`
+      - Convert the coverage to html: `reportgenerator -reports:"Canadel.Tests\TestResults\**\coverage.cobertura.xml" -targetdir:"coverage-report" -reporttypes:Html`
+      - Open the `backend-dotnet/coverage-report/index.html` file in browser.
 - Frontend
   - Open the CMD terminal,
   - Access the frontend folder: `cd frontend`
