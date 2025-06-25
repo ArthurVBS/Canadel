@@ -116,7 +116,7 @@
       - The available endpoint: `http://localhost:5000`.
     - To use C# Ecosystem: `cd backend-dotnet`
       - Install modules: `dotnet build`,
-      - Finally, start a localhost: `dotnet run`,
+      - Finally, start a localhost: `dotnet run --project ./Canadel/Canadel.csproj`,
       - The available endpoint: `http://localhost:5000`.
   - The second terminal access the frontend folder: `cd frontend`,
     - Install node modules: `yarn`,
@@ -155,9 +155,10 @@
     - To use C# Ecosystem: `cd backend-dotnet`
       - Build project: `dotnet build`,
       - Install globally the report generator tool: `dotnet tool install -g dotnet-reportgenerator-globaltool`
-      - Run the tests: `dotnet test`,
-      - Create the coverage result: `dotnet test --collect:"XPlat Code Coverage"`
-      - Convert the coverage to html: `reportgenerator -reports:"Canadel.Tests\TestResults\**\coverage.cobertura.xml" -targetdir:"coverage-report" -reporttypes:Html`
+      - Run the tests with the coverage result: `dotnet test --collect:"XPlat Code Coverage"`
+      - Convert the coverage to html: `reportgenerator -reports:"Canadel.Tests/TestResults/**/coverage.cobertura.xml" -targetdir:"coverage-report" -reporttypes:Html`
+        - `or`
+      - Convert the coverage to html: `reportgenerator.exe -reports:"Canadel.Tests\TestResults\**\coverage.cobertura.xml" -targetdir:"coverage-report" -reporttypes:Html`
       - Open the `backend-dotnet/coverage-report/index.html` file in browser.
 - Frontend
   - Open the CMD terminal,
