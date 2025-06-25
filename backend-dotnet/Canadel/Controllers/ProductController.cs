@@ -26,7 +26,7 @@ namespace Canadel.Controllers
     {
       return await ExecuteAction(async () => await service.GetAllProducts());
     }
-    
+
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProductById(int id)
     {

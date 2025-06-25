@@ -1,43 +1,64 @@
 #!/bin/sh
 FRONTEND_DIR="frontend"
 BACKEND_JAVA_DIR="backend-java"
+BACKEND_DOTNET_DIR="backend-dotnet"
 
 if [ -d "$FRONTEND_DIR" ]; then
- echo "Frontend directory found. Running lint..."
- cd "$FRONTEND_DIR" || exit 1
- yarn prettier
- LINT_EXIT_CODE=$?
+  echo "Frontend directory found. Running lint..."
+  cd "$FRONTEND_DIR" || exit 1
+  yarn prettier
+  LINT_EXIT_CODE=$?
 
- if [ $LINT_EXIT_CODE -ne 0 ]; then
- echo "Frontend linting failed. Aborting commit."
- cd - || exit 1
- exit 1
- fi
+  if [ $LINT_EXIT_CODE -ne 0 ]; then
+    echo "Frontend linting failed. Aborting commit."
+    cd - || exit 1
+    exit 1
+  fi
 
- echo "Frontend linting completed. Adding changes..."
- git add .
- cd ..
+  echo "Frontend linting completed. Adding changes..."
+  git add .
+  cd ..
 else
- echo "Frontend directory not found. Skipping lint."
+  echo "Frontend directory not found. Skipping lint."
 fi
 
 if [ -d "$BACKEND_JAVA_DIR" ]; then
- echo "Backend Java directory found. Running lint..."
- cd "$BACKEND_JAVA_DIR" || exit 1
- ./gradlew spotlessApply
- SPOTLESS_EXIT_CODE=$?
+  echo "Backend Java directory found. Running lint..."
+  cd "$BACKEND_JAVA_DIR" || exit 1
+  ./gradlew spotlessApply
+  SPOTLESS_EXIT_CODE=$?
 
- if [ $SPOTLESS_EXIT_CODE -ne 0 ]; then
- echo "Backend-Java linting failed. Aborting commit."
- cd - || exit 1
- exit 1
- fi
+  if [ $SPOTLESS_EXIT_CODE -ne 0 ]; then
+    echo "Backend Java linting failed. Aborting commit."
+    cd - || exit 1
+    exit 1
+  fi
 
- echo "Backend-Java linting completed. Adding changes..."
- git add .
- cd ..
+  echo "Backend Java linting completed. Adding changes..."
+  git add .
+  cd ..
 else
- echo "Backend-Java directory not found. Skipping lint."
+  echo "Backend Java directory not found. Skipping lint."
+fi
+
+if [ -d "$BACKEND_DOTNET_DIR" ]; then
+  echo "Backend .NET directory found. Running dotnet format..."
+  cd "$BACKEND_DOTNET_DIR" || exit 1
+
+  dotnet format
+  DOTNET_FORMAT_EXIT_CODE=$?
+
+  if [ $DOTNET_FORMAT_EXIT_CODE -ne 0 ]; then
+    echo "Backend .NET formatting failed. Aborting commit."
+    cd - || exit 1
+    exit 1
+  fi
+
+  echo "Backend .NET formatting completed. Adding changes..."
+  git add .
+  cd ..
+else
+  echo "Backend .NET directory not found. Skipping dotnet format."
 fi
 
 exit 0
